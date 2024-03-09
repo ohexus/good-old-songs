@@ -1,12 +1,6 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import RoutePaths from '../../router/RoutePaths';
+import RoutePaths from '@/router/RoutePaths'; // Direct import to avoid possible circular dependency
 
 export interface NavBarProps {
   title: string;
