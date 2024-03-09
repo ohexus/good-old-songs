@@ -1,11 +1,16 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RootLayout } from '../layouts';
 import { Artist, ErrorPage, Favorite, Home, NotFound, Root } from '../pages';
 import RoutePaths from './RoutePaths';
 
 const router = createBrowserRouter([
   {
     path: RoutePaths.ROOT,
-    element: <Root />,
+    element: (
+      <RootLayout>
+        <Root />
+      </RootLayout>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {

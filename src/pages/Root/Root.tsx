@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 
 const Root = () => (
-  <div>
+  <main>
     <Outlet />
-  </div>
+  </main>
 );
 
 export default Root;
