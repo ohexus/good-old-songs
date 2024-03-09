@@ -2,12 +2,11 @@ import {
   AppBar,
   Box,
   Button,
-  CssBaseline,
   Toolbar,
   Typography,
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import { RoutePaths } from '../../router';
+import RoutePaths from '../../router/RoutePaths';
 
 export interface NavBarProps {
   title: string;
@@ -30,7 +29,6 @@ const navItems = [
 
 const NavBar: React.FC<NavBarProps> = ({ title }) => (
   <Box sx={{ display: 'flex' }}>
-    <CssBaseline />
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
