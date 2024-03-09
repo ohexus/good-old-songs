@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: RoutePaths.ARTIST,
+        path: `${RoutePaths.ARTIST}/:artistId`,
         element: <Artist />,
       },
       {
