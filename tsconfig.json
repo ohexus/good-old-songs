@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,9 +15,18 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src"
+    "baseUrl": "./",
+    "paths": {
+      "@/features": ["./src/features"],
+      "@/layouts": ["./src/layouts"],
+      "@/pages": ["./src/pages"],
+      "@/router": ["./src/router"],
+      "@/router/*": ["./src/router/*"],
+      "@/services": ["./src/services"],
+      "@/services/*": ["./src/services/*"],
+      "@/types": ["./src/types"],
+      "@/ui": ["./src/ui"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src", "./**/*.ts", "./**/*.tsx"]
 }
