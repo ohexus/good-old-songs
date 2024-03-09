@@ -1,7 +1,9 @@
-import './App.css';
+import Router from './router';
 
-function App() {
-  return <div className="App">App works.</div>;
-}
+const App = () => (
+  <div className="app">
+    <Router />
+  </div>
+);
 
 export default App;
