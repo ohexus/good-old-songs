@@ -1,7 +1,9 @@
+import { Artists } from '../../features';
+
 const Home = () => (
-  <div>
-    <h1>Home</h1>
-  </div>
+  <>
+    <Artists />
+  </>
 );
 
 export default Home;
