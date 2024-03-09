@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RootLayout } from '../layouts';
-import { Artist, ErrorPage, Favorite, Home, NotFound, Root } from '../pages';
+import { RootLayout } from '@/layouts';
+import { Artist, ErrorPage, Favorite, Home, NotFound, Root } from '@/pages';
 import RoutePaths from './RoutePaths';
 
 const router = createBrowserRouter([

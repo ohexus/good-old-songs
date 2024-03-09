@@ -1,4 +1,4 @@
-import { NavBar } from '../../ui';
+import { NavBar } from '@/ui';
 
 export interface RootLayoutProps {
   children?: React.ReactNode;

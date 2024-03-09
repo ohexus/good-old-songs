@@ -1,4 +1,4 @@
-import { Artists } from '../../features';
+import { Artists } from '@/features';
 
 const Home = () => (
   <>
