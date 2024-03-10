@@ -1,8 +1,8 @@
-import { Artists } from '@/features';
+import { ArtistsGrid } from '@/features';
 
 const Home = () => (
   <>
-    <Artists />
+    <ArtistsGrid />
   </>
 );
 

@@ -2,7 +2,7 @@ import { CircularProgress, Container, Grid } from '@mui/material';
 import { useGetAllArtistsQuery } from '@/services/artistsApi';
 import { ArtistCard } from '@/ui';
 
-const Artists = () => {
+const ArtistsGrid = () => {
   const { data = [], error, isLoading } = useGetAllArtistsQuery();
 
   if (error) {
@@ -39,4 +39,4 @@ const Artists = () => {
   );
 };
 
-export default Artists;
+export default ArtistsGrid;
