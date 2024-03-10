@@ -1,4 +1,4 @@
-import { CircularProgress, Grid } from '@mui/material';
+import { CircularProgress, Container, Grid } from '@mui/material';
 import { useGetAllArtistsQuery } from '@/services/artistsApi';
 import { ArtistCard } from '@/ui';
 
@@ -9,12 +9,20 @@ const Artists = () => {
     throw error;
   }
 
+  if (!data) {
+    return null;
+  }
+
   return (
-    <div>
+    <Container
+      sx={{
+        height: '100%',
+      }}
+    >
       {isLoading ? (
         <CircularProgress />
-      ) : data ? (
-        <Grid container spacing={2} padding={4}>
+      ) : (
+        <Grid container spacing={2} py={4}>
           {data.map(({ avatar, id, name, songsCount }) => (
             <Grid item key={id}>
               <ArtistCard
@@ -26,8 +34,8 @@ const Artists = () => {
             </Grid>
           ))}
         </Grid>
-      ) : null}
-    </div>
+      )}
+    </Container>
   );
 };
 
