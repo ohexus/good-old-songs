@@ -1,6 +1,6 @@
 import { CircularProgress, Grid } from '@mui/material';
 import { useGetAllArtistsQuery } from '@/services/artistsApi';
-import { ArtistCard } from './components';
+import { ArtistCard } from '@/ui';
 
 const Artists = () => {
   const { data = [], error, isLoading } = useGetAllArtistsQuery();
