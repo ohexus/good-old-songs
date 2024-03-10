@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { Artist } from '@/types';
+import type { Artist, Song } from '@/types';
 
 const artistsApi = createApi({
   reducerPath: 'artistsApi',
@@ -10,11 +10,31 @@ const artistsApi = createApi({
     getAllArtists: builder.query<Artist[], void>({
       query: () => 'artists',
     }),
+    getArtistById: builder.query<Artist, string>({
+      query: (id) => `artists/${id}`,
+    }),
+    getSongsByArtist: builder.query<
+      Song[],
+      {
+        id: string;
+        params: {
+          page: number;
+          limit: number;
+        };
+      }
+    >({
+      query: ({ id, params }) => ({
+        url: `artists/${id}/songs`,
+        params,
+      }),
+    }),
   }),
 });
 
 export const {
   useGetAllArtistsQuery,
+  useGetArtistByIdQuery,
+  useGetSongsByArtistQuery,
 } = artistsApi;
 
 export default artistsApi;
