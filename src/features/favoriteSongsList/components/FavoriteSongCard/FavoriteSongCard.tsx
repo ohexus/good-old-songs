@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from '@mui/material';
+import { Box } from '@mui/material';
 import { useFavoriteSongs } from '@/hooks';
 import { useGetSongByIdQuery } from '@/services/artistsApi';
 import { SongCard } from '@/ui';
@@ -9,7 +9,7 @@ export interface FavoriteSongCardProps {
 }
 
 const FavoriteSongCard: React.FC<FavoriteSongCardProps> = ({ artistId, id }) => {
-  const { data, error, isLoading } = useGetSongByIdQuery({
+  const { data, error } = useGetSongByIdQuery({
     artistId,
     id,
   });
@@ -34,11 +34,7 @@ const FavoriteSongCard: React.FC<FavoriteSongCardProps> = ({ artistId, id }) => 
 
   return (
     <Box>
-      {isLoading ? (
-        <CircularProgress />
-      ) : (
-        <SongCard data={data} addCta={handleAddSong} removeCta={handleRemoveSong} defaultFavorite />
-      )}
+      <SongCard data={data} addCta={handleAddSong} removeCta={handleRemoveSong} defaultFavorite />
     </Box>
   );
 };
