@@ -1,4 +1,5 @@
 export {
+  AppTitles,
   appHeaderSlice,
   setTitle,
 } from './appHeader';
