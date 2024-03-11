@@ -19,6 +19,7 @@
     "paths": {
       "@/app": ["./src/app"],
       "@/features": ["./src/features"],
+      "@/hooks": ["./src/hooks"],
       "@/layouts": ["./src/layouts"],
       "@/pages": ["./src/pages"],
       "@/router": ["./src/router"],
