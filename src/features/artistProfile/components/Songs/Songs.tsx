@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, CircularProgress, Pagination, Stack } from '@mui/material';
+import { useFavoriteSongs } from '@/hooks';
 import { SongCard } from '@/ui';
-import useFavoriteSongs from './useFavoriteSongs';
 import useSongs from './useSongs';
 
 export interface SongsProps {
