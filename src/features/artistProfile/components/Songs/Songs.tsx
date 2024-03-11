@@ -1,77 +1,43 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Box, CircularProgress, Pagination, Stack } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '@/app';
-import { addSong, removeSong } from '@/features';
-import { useGetSongsByArtistQuery } from '@/services/artistsApi';
 import { SongCard } from '@/ui';
+import useFavoriteSongs from './useFavoriteSongs';
+import useSongs from './useSongs';
 
 export interface SongsProps {
   artistId: string;
   totalAmount: number;
 }
 
-const songsPerPage = 5;
-
 const Songs: React.FC<SongsProps> = ({ artistId, totalAmount }) => {
-  const dispatch = useAppDispatch();
-  const favoriteSongs = useAppSelector((state) => state.favoriteSongs);
-
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(totalAmount / songsPerPage);
-  const {
-    data = [],
-    error,
-    isLoading,
-  } = useGetSongsByArtistQuery({
-    id: artistId,
-    params: {
-      page: currentPage,
-      limit: songsPerPage,
-    },
-  });
 
-  if (error) {
-    throw error;
-  }
+  const { data, isLoading, totalPages } = useSongs(currentPage, artistId, totalAmount);
+  const { checkIsFavorite, addFavoriteSong, removeFavoriteSong } = useFavoriteSongs();
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number,
-  ) => {
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setCurrentPage(value);
   };
 
   const handleAddSong = (id: string) => {
-    dispatch(
-      addSong({
-        artistId,
-        id,
-      }),
-    );
+    addFavoriteSong(id, artistId);
   };
 
   const handleRemoveSong = (id: string) => {
-    dispatch(removeSong(id));
+    removeFavoriteSong(id);
   };
 
-  const checkIsFavorite = useCallback(
-    (id: string) => {
-      return favoriteSongs.findIndex((song) => song.id === id) !== -1;
-    },
-    [favoriteSongs],
-  );
-
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      <Box mb={2}>
+    <Box display="flex" flexDirection="column" alignItems="center" width="100%" pb={2}>
+      <Box width="100%" mb={2}>
         {isLoading ? (
           <CircularProgress />
         ) : (
           <Stack
             spacing={2}
-            direction="row"
+            direction="column"
             alignContent="center"
-            justifyContent="center"
+            justifyContent="stretch"
             width="100%"
           >
             {data.map((song) => (
@@ -90,6 +56,7 @@ const Songs: React.FC<SongsProps> = ({ artistId, totalAmount }) => {
         count={totalPages}
         page={currentPage}
         onChange={handlePageChange}
+        shape="rounded"
       />
     </Box>
   );
