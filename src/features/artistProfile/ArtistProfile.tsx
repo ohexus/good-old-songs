@@ -26,22 +26,24 @@ const ArtistProfile: React.FC<ArtistProfileProps> = ({ id }) => {
 
   return (
     <>
-      <Box display="flex" alignItems="center" gap={4} pt={4} mb={4}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        gap={4}
+        mb={4}
+      >
         <Avatar
           src={data.avatar}
           alt={data.name}
-          sx={{ width: 144, height: 144 }}
+          sx={{ width: 240, height: 240 }}
+          variant="rounded"
         />
-        <Typography variant="h2" component="h1">
+        <Typography variant="h3" component="h1">
           {data.name}
         </Typography>
       </Box>
-      <Box>
-        <Typography variant="h4" component="h2" gutterBottom>
-          Songs
-        </Typography>
-        <Songs artistId={id} totalAmount={data.songsCount} />
-      </Box>
+      <Songs artistId={id} totalAmount={data.songsCount} />
     </>
   );
 };
