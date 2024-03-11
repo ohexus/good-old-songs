@@ -1,4 +1,4 @@
-import { NavBar } from '@/ui';
+import { AppHeader } from '@/features';
 
 export interface RootLayoutProps {
   children?: React.ReactNode;
@@ -6,7 +6,7 @@ export interface RootLayoutProps {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => (
   <div className="root">
-    <NavBar title='TODO: Dynamic Title' />
+    <AppHeader />
     {children}
   </div>
 );
