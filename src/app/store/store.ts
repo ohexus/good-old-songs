@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { favoriteSongsSlice } from '@/features';
+import { appHeaderSlice, favoriteSongsSlice } from '@/features';
 import artistsApi from '@/services/artistsApi';
 
 const store = configureStore({
   reducer: {
+    appHeader: appHeaderSlice.reducer,
     favoriteSongs: favoriteSongsSlice.reducer,
     [artistsApi.reducerPath]: artistsApi.reducer,
   },
