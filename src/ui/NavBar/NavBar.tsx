@@ -1,45 +1,58 @@
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import {
+  AppBar,
+  Badge,
+  Box,
+  IconButton,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+import {
+  Favorite as FavoriteIcon,
+  NavigateBefore as NavigateBeforeIcon,
+} from '@mui/icons-material';
 import RoutePaths from '@/router/RoutePaths'; // Direct import to avoid possible circular dependency
 
 export interface NavBarProps {
   title: string;
+  favoriteSongsAmount: number;
+  onNavigationBackClick?: () => void;
 }
 
-const navItems = [
-  {
-    path: RoutePaths.HOME,
-    name: 'HOME',
-  },
-  {
-    path: RoutePaths.ARTIST,
-    name: 'ARTIST',
-  },
-  {
-    path: RoutePaths.FAVORITE,
-    name: 'FAVORITE',
-  },
-];
-
-const NavBar: React.FC<NavBarProps> = ({ title }) => (
-  <Box sx={{ display: 'flex' }}>
+const NavBar: React.FC<NavBarProps> = ({
+  title,
+  favoriteSongsAmount,
+  onNavigationBackClick,
+}) => (
+  <Box display="flex">
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+        <IconButton
+          onClick={onNavigationBackClick}
+          sx={{
+            marginRight: 2,
+            visibility: !onNavigationBackClick ? 'hidden' : 'visible',
+          }}
+          size="large"
+          edge="start"
+          color="inherit"
+        >
+          <NavigateBeforeIcon />
+        </IconButton>
+        <Typography variant="h5" component="h1" flexGrow={1}>
           {title}
         </Typography>
-        <Box>
-          {navItems.map(({ path, name }) => (
-            <Button
-              key={path}
-              component={RouterLink}
-              sx={{ color: '#fff' }}
-              to={path}
-            >
-              {name}
-            </Button>
-          ))}
-        </Box>
+        <IconButton
+          component={RouterLink}
+          to={RoutePaths.FAVORITE}
+          size="large"
+          edge="end"
+          color="inherit"
+        >
+          <Badge badgeContent={favoriteSongsAmount} showZero color="secondary">
+            <FavoriteIcon />
+          </Badge>
+        </IconButton>
       </Toolbar>
     </AppBar>
   </Box>
