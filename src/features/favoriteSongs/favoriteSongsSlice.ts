@@ -1,27 +1,19 @@
-import { Song } from '@/types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-export interface FavoriteSongsState {
-  favoriteSongs: Song[];
+export interface FavoriteSongRecord {
+  artistId: string;
+  id: string;
 }
-
-const initialState: FavoriteSongsState = {
-  favoriteSongs: [],
-};
 
 const favoriteSongsSlice = createSlice({
   name: 'favoriteSongs',
-  initialState,
+  initialState: [] as FavoriteSongRecord[],
   reducers: {
-    addSong: (state, action: PayloadAction<Song>) => {
-      state.favoriteSongs.push(action.payload);
+    addSong: (state, action: PayloadAction<FavoriteSongRecord>) => {
+      state.push(action.payload);
     },
     removeSong: (state, action: PayloadAction<string>) => {
-      const newFavoriteSongs = state.favoriteSongs.filter(
-        (song) => song.id !== action.payload,
-      );
-
-      state.favoriteSongs = newFavoriteSongs;
+      return state.filter(({ id }) => id !== action.payload);
     },
   },
 });
