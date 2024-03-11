@@ -1,6 +1,5 @@
 import { Box, CircularProgress } from '@mui/material';
-import { useAppDispatch } from '@/app';
-import { addSong, removeSong } from '@/features';
+import { useFavoriteSongs } from '@/hooks';
 import { useGetSongByIdQuery } from '@/services/artistsApi';
 import { SongCard } from '@/ui';
 
@@ -10,12 +9,12 @@ export interface FavoriteSongCardProps {
 }
 
 const FavoriteSongCard: React.FC<FavoriteSongCardProps> = ({ artistId, id }) => {
-  const dispatch = useAppDispatch();
-
   const { data, error, isLoading } = useGetSongByIdQuery({
     artistId,
     id,
   });
+
+  const { addFavoriteSong, removeFavoriteSong } = useFavoriteSongs();
 
   if (error) {
     throw error;
@@ -26,16 +25,11 @@ const FavoriteSongCard: React.FC<FavoriteSongCardProps> = ({ artistId, id }) => 
   }
 
   const handleAddSong = (id: string) => {
-    dispatch(
-      addSong({
-        artistId,
-        id,
-      }),
-    );
+    addFavoriteSong(id, artistId);
   };
 
   const handleRemoveSong = (id: string) => {
-    dispatch(removeSong(id));
+    removeFavoriteSong(id);
   };
 
   return (
@@ -43,12 +37,7 @@ const FavoriteSongCard: React.FC<FavoriteSongCardProps> = ({ artistId, id }) => 
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <SongCard
-          data={data}
-          addCta={handleAddSong}
-          removeCta={handleRemoveSong}
-          defaultFavorite
-        />
+        <SongCard data={data} addCta={handleAddSong} removeCta={handleRemoveSong} defaultFavorite />
       )}
     </Box>
   );
