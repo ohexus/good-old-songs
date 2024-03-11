@@ -4,12 +4,12 @@ import { addSong, removeSong } from '@/features';
 import { useGetSongByIdQuery } from '@/services/artistsApi';
 import { SongCard } from '@/ui';
 
-export interface FavoriteSongProps {
+export interface FavoriteSongCardProps {
   artistId: string;
   id: string;
 }
 
-const FavoriteSong: React.FC<FavoriteSongProps> = ({ artistId, id }) => {
+const FavoriteSongCard: React.FC<FavoriteSongCardProps> = ({ artistId, id }) => {
   const dispatch = useAppDispatch();
 
   const { data, error, isLoading } = useGetSongByIdQuery({
@@ -54,4 +54,4 @@ const FavoriteSong: React.FC<FavoriteSongProps> = ({ artistId, id }) => {
   );
 };
 
-export default FavoriteSong;
+export default FavoriteSongCard;

@@ -1,1 +1,1 @@
-export { default as FavoriteSong } from './FavoriteSong';
+export { default as FavoriteSongCard } from './FavoriteSongCard';

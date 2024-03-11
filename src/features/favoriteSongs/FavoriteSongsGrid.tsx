@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import { useAppSelector } from '@/app';
-import { FavoriteSong } from './components';
+import { FavoriteSongCard } from './components';
 
 const FavoriteSongsGrid = () => {
   const songs = useAppSelector((state) => state.favoriteSongs);
@@ -9,7 +9,7 @@ const FavoriteSongsGrid = () => {
     <Grid container spacing={2}>
       {songs.map(({ artistId, id }) => (
         <Grid item xs={2} key={id}>
-          <FavoriteSong artistId={artistId} id={id} />
+          <FavoriteSongCard artistId={artistId} id={id} />
         </Grid>
       ))}
     </Grid>
