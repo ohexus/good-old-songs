@@ -1,9 +1,5 @@
-import {
-  Avatar,
-  Box,
-  CircularProgress,
-  Typography,
-} from '@mui/material';
+import { Avatar, Box, CircularProgress, Typography } from '@mui/material';
+import { useAppTitle } from '@/hooks';
 import { useGetArtistByIdQuery } from '@/services/artistsApi';
 import { Songs } from './components';
 
@@ -13,6 +9,8 @@ export interface ArtistProfileProps {
 
 const ArtistProfile: React.FC<ArtistProfileProps> = ({ id }) => {
   const { data, error, isLoading } = useGetArtistByIdQuery(id);
+
+  useAppTitle(data?.name);
 
   if (isLoading) {
     return <CircularProgress />;
