@@ -8,6 +8,7 @@ module.exports = {
         alias: {
           '@/app': path.resolve(__dirname, './src/app'),
           '@/features': path.resolve(__dirname, './src/features'),
+          '@/hooks': path.resolve(__dirname, './src/hooks'),
           '@/layouts': path.resolve(__dirname, './src/layouts'),
           '@/pages': path.resolve(__dirname, './src/pages'),
           '@/router': path.resolve(__dirname, './src/router'),
