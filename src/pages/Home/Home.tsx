@@ -1,10 +1,15 @@
-import { ArtistsGrid } from '@/features';
+import { AppTitles, ArtistsGrid } from '@/features';
+import { useAppTitle } from '@/hooks';
 import { PageLayout } from '@/layouts';
 
-const Home = () => (
-  <PageLayout>
-    <ArtistsGrid />
-  </PageLayout>
-);
+const Home = () => {
+  useAppTitle(AppTitles.HOME_PAGE);
+
+  return (
+    <PageLayout>
+      <ArtistsGrid />
+    </PageLayout>
+  );
+};
 
 export default Home;
