@@ -1,4 +1,4 @@
-import { AppTitles, FavoriteSongsGrid } from '@/features';
+import { AppTitles, FavoriteSongsList } from '@/features';
 import { useAppTitle } from '@/hooks';
 import { PageLayout } from '@/layouts';
 
@@ -7,7 +7,7 @@ const Favorite = () => {
 
   return (
     <PageLayout>
-      <FavoriteSongsGrid />
+      <FavoriteSongsList />
     </PageLayout>
   );
 };

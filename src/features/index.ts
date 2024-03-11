@@ -7,8 +7,8 @@ export {
 export { default as ArtistProfile } from './artistProfile';
 export { default as ArtistsGrid } from './artistsGrid';
 export {
-  default as FavoriteSongsGrid,
+  default as FavoriteSongsList,
   addFavoriteSong,
   favoriteSongsSlice,
   removeFavoriteSong,
-} from './favoriteSongsGrid';
+} from './favoriteSongsList';

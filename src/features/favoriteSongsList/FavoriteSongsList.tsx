@@ -1,9 +1,9 @@
 import { Stack } from '@mui/material';
-import { useAppSelector } from '@/app';
+import { useFavoriteSongs } from '@/hooks';
 import { FavoriteSongCard } from './components';
 
-const FavoriteSongsGrid = () => {
-  const songs = useAppSelector((state) => state.favoriteSongs);
+const FavoriteSongsList = () => {
+  const { data: songs } = useFavoriteSongs();
 
   return (
     <Stack
@@ -20,4 +20,4 @@ const FavoriteSongsGrid = () => {
   );
 };
 
-export default FavoriteSongsGrid;
+export default FavoriteSongsList;

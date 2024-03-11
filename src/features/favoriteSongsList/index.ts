@@ -1,4 +1,4 @@
-export { default } from './FavoriteSongsGrid';
+export { default } from './FavoriteSongsList';
 export {
   default as favoriteSongsSlice,
   addFavoriteSong,
