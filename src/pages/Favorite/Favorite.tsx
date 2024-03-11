@@ -1,7 +1,10 @@
+import { FavoriteSongsGrid } from '@/features';
+import { PageLayout } from '@/layouts';
+
 const Favorite = () => (
-  <div>
-    <h1>Favorite</h1>
-  </div>
+  <PageLayout>
+    <FavoriteSongsGrid />
+  </PageLayout>
 );
 
 export default Favorite;
