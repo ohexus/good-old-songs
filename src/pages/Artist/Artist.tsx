@@ -1,5 +1,6 @@
-import { ArtistProfile } from '@/features';
 import { useParams } from 'react-router-dom';
+import { ArtistProfile } from '@/features';
+import { PageLayout } from '@/layouts';
 
 const Artist = () => {
   const { artistId } = useParams();
@@ -8,7 +9,11 @@ const Artist = () => {
     throw new Error('No artist ID specified');
   }
 
-  return <ArtistProfile id={artistId} />;
+  return (
+    <PageLayout>
+      <ArtistProfile id={artistId} />
+    </PageLayout>
+  );
 };
 
 export default Artist;
