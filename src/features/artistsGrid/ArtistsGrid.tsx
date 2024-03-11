@@ -18,15 +18,10 @@ const ArtistsGrid = () => {
   }
 
   return (
-    <Grid container spacing={2}>
-      {data.map(({ avatar, id, name, songsCount }) => (
-        <Grid item key={id}>
-          <ArtistCard
-            avatar={avatar}
-            id={id}
-            name={name}
-            songsCount={songsCount}
-          />
+    <Grid container spacing={4}>
+      {data.map((artist) => (
+        <Grid item key={artist.id} xs={3}>
+          <ArtistCard data={artist} />
         </Grid>
       ))}
     </Grid>
