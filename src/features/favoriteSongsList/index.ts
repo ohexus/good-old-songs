@@ -1,7 +1,7 @@
-export { default } from './FavoriteSongsGrid';
+export { default } from './FavoriteSongsList';
 export {
   default as favoriteSongsSlice,
-  addSong,
-  removeSong,
+  addFavoriteSong,
+  removeFavoriteSong,
 } from './favoriteSongsSlice';
 export type { FavoriteSongRecord } from './favoriteSongsSlice';

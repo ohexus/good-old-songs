@@ -9,15 +9,15 @@ const favoriteSongsSlice = createSlice({
   name: 'favoriteSongs',
   initialState: [] as FavoriteSongRecord[],
   reducers: {
-    addSong: (state, action: PayloadAction<FavoriteSongRecord>) => {
+    addFavoriteSong: (state, action: PayloadAction<FavoriteSongRecord>) => {
       state.push(action.payload);
     },
-    removeSong: (state, action: PayloadAction<string>) => {
+    removeFavoriteSong: (state, action: PayloadAction<string>) => {
       return state.filter(({ id }) => id !== action.payload);
     },
   },
 });
 
-export const { addSong, removeSong } = favoriteSongsSlice.actions;
+export const { addFavoriteSong, removeFavoriteSong } = favoriteSongsSlice.actions;
 
 export default favoriteSongsSlice;
