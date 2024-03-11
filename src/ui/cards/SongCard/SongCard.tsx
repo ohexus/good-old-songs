@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Card,
   CardActions,
@@ -11,26 +12,38 @@ import {
   FavoriteBorder as FavoriteBorderIcon,
 } from '@mui/icons-material';
 import { Song } from '@/types';
-import { useState } from 'react';
 
 export interface SongCardProps {
   data: Song;
+  addCta: (id: string) => void;
+  removeCta: (id: string) => void;
+  defaultFavorite?: boolean;
 }
 
 const SongCard: React.FC<SongCardProps> = ({
-  data: { artistName, cover, duration, name },
+  data: { artistName, cover, duration, id, name },
+  addCta,
+  removeCta,
+  defaultFavorite,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleFavoriteClick = () => {
-    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
+    const newIsFavorite = !isFavorite;
+
+    setIsFavorite(newIsFavorite);
+
+    newIsFavorite ? addCta(id) : removeCta(id);
   };
+
+  useEffect(() => {
+    setIsFavorite(!!defaultFavorite);
+  }, [defaultFavorite]);
 
   return (
     <Card>
       <CardMedia
         component="img"
-        width="240"
         image={cover}
         title={name}
         style={{ objectFit: 'cover' }}
