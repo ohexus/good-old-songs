@@ -5,4 +5,4 @@ export {
   addSong,
   favoriteSongsSlice,
   removeSong,
-} from './favoriteSongs';
+} from './favoriteSongsGrid';
